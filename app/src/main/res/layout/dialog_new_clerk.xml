@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_add_clerk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:padding="25dp"
+        android:text="Add new clerk"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/dbx_primary" />
+
+    <EditText
+        android:id="@+id/clerk_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_add_clerk"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:hint="Name of the clerk"
+        android:inputType="textPersonName"
+        android:textColor="@color/dark_gray"
+        android:textColorHint="@color/silver" />
+
+    <EditText
+        android:id="@+id/dropbox_mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/clerk_name"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:hint="Clerk's Dropbox ID"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/dark_gray"
+        android:textColorHint="@color/silver" />
+
+    <Button
+        android:id="@+id/add_clerk_btn"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dropbox_mail"
+        android:layout_marginBottom="22dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:text="Add Clerk" />
+</RelativeLayout>

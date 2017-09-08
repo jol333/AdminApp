@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Manager\'s App</string>
+    <!-- Change this to your app key -->
+    <string name="app_key">drinoypt6l7gy2x</string>
+    <string name="title_activity_files">Files</string>
+    <string name="title_activity_openwith">Open With</string>
+</resources>

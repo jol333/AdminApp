@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.dbapp.ashworth.adminapp.UserActivity">
+
+    <include layout="@layout/app_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <Button
+            android:id="@+id/login_button"
+            style="@style/ButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:drawableLeft="@drawable/ic_dropbox_white_24dp"
+            android:paddingLeft="25dp"
+            android:text="Login with Dropbox" />
+
+        <TextView
+            android:id="@+id/name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/email_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name_text" />
+
+        <TextView
+            android:id="@+id/type_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/email_text" />
+
+        <Button
+            android:id="@+id/files_button"
+            style="@style/ButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="View Files"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/connection_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/files_button"
+            android:layout_below="@id/type_text"
+            android:gravity="center"
+            android:text="Connecting..."
+            android:visibility="gone" />
+
+    </RelativeLayout>
+</LinearLayout>

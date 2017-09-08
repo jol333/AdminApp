@@ -1,0 +1,22 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/dbx_white_opaque_100</item>
+        <item name="colorPrimary">@color/dbx_primary</item>
+        <item name="colorPrimaryDark">@color/dbx_primary_dark</item>
+        <item name="colorControlNormal">@color/dbx_color_control_normal</item>
+        <item name="colorControlActivated">@color/dbx_color_control_activated</item>
+        <item name="colorControlHighlight">@color/dbx_color_control_highlight</item>
+        <item name="colorSwitchThumbNormal">@color/dbx_color_switch_thumbNormal</item>
+        <item name="colorAccent">@color/dbx_primary</item>
+    </style>
+
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:height">70dp</item>
+        <item name="android:radius">35dp</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
