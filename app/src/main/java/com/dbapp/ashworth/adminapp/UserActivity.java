@@ -116,7 +116,7 @@ public class UserActivity extends DropboxActivity {
             findViewById(R.id.login_button).setVisibility(View.GONE);
             findViewById(R.id.email_text).setVisibility(View.VISIBLE);
             findViewById(R.id.name_text).setVisibility(View.VISIBLE);
-            findViewById(R.id.type_text).setVisibility(View.VISIBLE);
+            //findViewById(R.id.type_text).setVisibility(View.VISIBLE);
             findViewById(R.id.connection_status).setVisibility(View.VISIBLE);
             findViewById(R.id.files_button).setVisibility(View.VISIBLE);
             findViewById(R.id.files_button).setEnabled(true);
@@ -125,7 +125,7 @@ public class UserActivity extends DropboxActivity {
             findViewById(R.id.email_text).setVisibility(View.GONE);
             findViewById(R.id.name_text).setVisibility(View.GONE);
             findViewById(R.id.connection_status).setVisibility(View.GONE);
-            findViewById(R.id.type_text).setVisibility(View.GONE);
+            //findViewById(R.id.type_text).setVisibility(View.GONE);
             findViewById(R.id.files_button).setVisibility(View.GONE);
             findViewById(R.id.files_button).setEnabled(false);
         }
@@ -136,9 +136,9 @@ public class UserActivity extends DropboxActivity {
         new GetCurrentAccountTask(DropboxClientFactory.getClient(), new GetCurrentAccountTask.Callback() {
             @Override
             public void onComplete(FullAccount result) {
-                ((TextView) findViewById(R.id.email_text)).setText("Dropbox ID: " + result.getEmail());
-                ((TextView) findViewById(R.id.name_text)).setText("Name: " + result.getName().getDisplayName());
-                ((TextView) findViewById(R.id.type_text)).setText("Account type: " + result.getAccountType().name());
+                ((TextView) findViewById(R.id.email_text)).setText("" + result.getEmail());
+                ((TextView) findViewById(R.id.name_text)).setText("" + result.getName().getDisplayName());
+                //((TextView) findViewById(R.id.type_text)).setText("Account type: " + result.getAccountType().name());
                 ((TextView) findViewById(R.id.connection_status)).setText("CONNECTED");
                 ((TextView) findViewById(R.id.connection_status)).setTextColor(ContextCompat.getColor(UserActivity.this, R.color.dbx_primary));
             }

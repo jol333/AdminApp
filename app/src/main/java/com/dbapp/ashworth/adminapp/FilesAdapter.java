@@ -1,7 +1,10 @@
 package com.dbapp.ashworth.adminapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,11 +29,13 @@ import java.util.List;
 public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.MetadataViewHolder> {
     private final Picasso mPicasso;
     private final Callback mCallback;
+    private final Context fContext;
     private List<Metadata> mFiles;
 
-    public FilesAdapter(Picasso picasso, Callback callback) {
+    public FilesAdapter(Context c, Picasso picasso, Callback callback) {
         mPicasso = picasso;
         mCallback = callback;
+        fContext = c;
     }
 
     public void setFiles(List<Metadata> files) {
@@ -131,7 +136,18 @@ public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.MetadataView
                     unShare.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            unshareFolder((FolderMetadata) item);
+                            AlertDialog.Builder builder = new AlertDialog.Builder(fContext);
+                            builder
+                                    .setTitle("Remove clerk")
+                                    .setMessage("Do you really want to remove this clerk?\nThis folder will be unshared and clerk won't be able to add files anymore.")
+                                    .setIcon(R.drawable.ic_alert_blue)
+                                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            unshareFolder((FolderMetadata) item); // Function to unshare folder
+                                        }
+                                    })
+                                    .setNegativeButton("No", null)                        //Do nothing on no
+                                    .show();
                         }
                     });
                 }
@@ -140,11 +156,16 @@ public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.MetadataView
 
         //Function to unshare folder
         private void unshareFolder(final FolderMetadata item) {
+            final ProgressDialog progressDialog = new ProgressDialog(fContext);
 
             new AsyncTask<Void, Void, Void>() {
                 @Override
                 protected void onPreExecute() {
                     super.onPreExecute();
+                    progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    progressDialog.setCancelable(false);
+                    progressDialog.setMessage("Unsharing the folder...");
+                    progressDialog.show();
                     unShare.setVisibility(View.GONE);
                     mTextView.setText(item.getName() + " (...)");
                 }
@@ -164,7 +185,9 @@ public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.MetadataView
                 @Override
                 protected void onPostExecute(Void aVoid) {
                     super.onPostExecute(aVoid);
-                    mTextView.setText(item.getName() + " (unshared)");
+                    progressDialog.dismiss();
+//                    mTextView.setText(item.getName() + " (unshared)");
+                    ((FilesActivity) fContext).loadData();
                 }
             }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
         }

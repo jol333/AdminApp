@@ -110,7 +110,7 @@ public class FilesActivity extends DropboxActivity {
         });
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.files_list);
-        mFilesAdapter = new FilesAdapter(PicassoClient.getPicasso(), new FilesAdapter.Callback() {
+        mFilesAdapter = new FilesAdapter(this, PicassoClient.getPicasso(), new FilesAdapter.Callback() {
 
             @Override
             public void onFolderClicked(FolderMetadata folder) {
@@ -135,6 +135,36 @@ public class FilesActivity extends DropboxActivity {
         finish();
         return true;
     }
+
+//    private SharedFolderMetadata isShared() {
+//        final SharedFolderMetadata sfm;
+//        new AsyncTask<Void, Integer, SharedFolderMetadata>() {
+//            @Override
+//            protected SharedFolderMetadata doInBackground(Void... params) {
+//                try {
+//                    DbxClientV2 dbxClient = DropboxClientFactory.getClient();
+//                    List<SharedFolderMetadata> myList = dbxClient.sharing().listFolders().getEntries();
+//
+//                    for (SharedFolderMetadata folder : myList) {
+//                        //Log.e("Folder name", folder.getName());
+//                        if (folder.getPathLower() != null && folder.getSharedFolderId() != null) {
+//                            return folder;
+//                        }
+//                    }
+//
+//                } catch (Exception e) {
+//                    Log.e("Folder unshare error", e.getMessage(), e);
+//                }
+//                return null;
+//            }
+//
+//            @Override
+//            protected void onPostExecute(SharedFolderMetadata sharedFolderMetadata) {
+//                super.onPostExecute(sharedFolderMetadata);
+//                sfm = sharedFolderMetadata;
+//            }
+//        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
+//    }
 
     private void unshareFolder() {
         final ProgressDialog progressDialog = new ProgressDialog(FilesActivity.this);

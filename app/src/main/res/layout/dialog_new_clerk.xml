@@ -39,7 +39,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="5dp"
-        android:hint="Clerk's Dropbox ID"
+        android:hint="Clerk's Dropbox Email ID"
         android:inputType="textEmailAddress"
         android:textColor="@color/dark_gray"
         android:textColorHint="@color/silver" />
